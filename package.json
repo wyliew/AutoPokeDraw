@@ -1,0 +1,28 @@
+{
+  "name": "autopokedraw",
+  "version": "1.0.0",
+  "description": "A tool that automatically draws the pokemon on pokedraw.net",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wyliew/AutoPokeDraw.git"
+  },
+  "keywords": [
+    "pokedraw",
+    "auto",
+    "draw",
+    "pokemon"
+  ],
+  "author": "Wylie Wang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wyliew/AutoPokeDraw/issues"
+  },
+  "homepage": "https://github.com/wyliew/AutoPokeDraw#readme",
+  "dependencies": {
+    "jquery": "^2.1.4"
+  }
+}
