@@ -24,9 +24,6 @@ color_rgb = [(244,42,53), (255,162,0), (255,213,0), (168,191,18), (46,181,47), (
 			(50,90,197), (250,208,222), (148,109,155), (135,94,55), (142,150,155), (0,0,0), (255,255,255)]
 pixelMap = {}
 
-def mousePos(cord):
-    win32api.SetCursorPos(cord)
-
 def leftClick():
 	win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
 	time.sleep(.001)
@@ -77,7 +74,6 @@ def drawImage():
 	colors = grabColors()	
 	draw = grabDraw()
 
-	lastPixel = -1
 	for x in range (0, ref.size[0], 8):
 		for y in range (0, ref.size[1], 8):
 			refPixel = ref.getpixel((x,y))
@@ -85,23 +81,22 @@ def drawImage():
 				closestPixel = getClosestPixel(refPixel)
 				if (closestPixel != len(color_rgb) - 1):
 					coord = color_coords[closestPixel]
-					mousePos(coord)
+					win32api.SetCursorPos(coord)
 					leftClick()
-					mousePos((draw_x_pad + x, draw_y_pad + y ) )
+					win32api.SetCursorPos((draw_x_pad + x, draw_y_pad + y ) )
 					leftClick()
-				lastPixel = closestPixel
 
 def drawImageInBlackOrWhite():
 	ref = grabRef()	
 	colors = grabColors()	
 	draw = grabDraw()
 
-	for x in range (0, ref.size[0], 2):
+	for x in range (0, ref.size[0], 3):
 		for y in range (0, ref.size[1], 3):
 			refPixel = ref.getpixel((x,y))
 			L = 0.2126*refPixel[0] + 0.7152*refPixel[1] + 0.0722*refPixel[2]
 			if L < 128:
-				mousePos((draw_x_pad + x, draw_y_pad + y ) )
+				win32api.SetCursorPos((draw_x_pad + x, draw_y_pad + y ) )
 				leftClick()
 				time.sleep(.002)
 def main():
